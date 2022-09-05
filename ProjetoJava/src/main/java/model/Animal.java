@@ -13,6 +13,10 @@ public class Animal {
     private String nome;
     private int idadeAnimal;
     private int sexoAnimal;
+    
+    public Animal() {
+    }
+    
 
     public Animal(int id, String nome, int idadeAnimal, int sexoAnimal) {
         this.id = id;
@@ -49,5 +53,9 @@ public class Animal {
         this.sexoAnimal = sexoAnimal;
     }
 
-  
+   @Override
+    public String toString() {
+        return "Animal{" + "Id=" + id + ", nome=" + nome + ", animalAnoNascimento=" + idadeAnimal + ", sexoAnimal=" + sexoAnimal +'}';
+    }
+    
 }

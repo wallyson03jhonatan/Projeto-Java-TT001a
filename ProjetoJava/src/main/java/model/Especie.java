@@ -11,6 +11,9 @@ package model;
 public class Especie {
     private int id;
     private String nomeEspecie;
+    
+    public Especie() {
+    }
 
     public Especie(int id, String nomeEspecie) {
         this.id = id;
@@ -29,4 +32,8 @@ public class Especie {
         this.nomeEspecie = nomeEspecie;
     }
       
+   
+    public String toString() {
+        return "Especie{" + "id=" + id + ", nomeEspecie=" + nomeEspecie + '}';
+    }
 }

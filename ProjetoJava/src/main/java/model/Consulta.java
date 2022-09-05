@@ -11,12 +11,18 @@ import java.time.LocalDate;
  * @author wally
  */
 public class Consulta {
+    private int id;
     private LocalDate dataConsulta; 
     private String historico;
 
-    public Consulta(LocalDate dataConsulta, String historico) {
+    public Consulta(int id, LocalDate dataConsulta, String historico) {
+        this.id = id;
         this.dataConsulta = dataConsulta;
         this.historico = historico;
+    }
+
+    public int getId() {
+        return id;
     }
 
     public LocalDate getDataConsulta() {
@@ -34,5 +40,7 @@ public class Consulta {
     public void setHistorico(String historico) {
         this.historico = historico;
     }
+
+    
 
 }
