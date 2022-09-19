@@ -58,11 +58,11 @@ public class Cliente {
         return copia;
     }
 
-    @Override
+  @Override
     public String toString() {
         String desc = "Cliente{" + "id=" + id + ", nome=" + nome + ", cpf=" + cpf + ", animais=" + animais + '}';
         String strAnimais = animais.toString();
         return desc + "\n" + strAnimais;
-    }
+    } 
 }
 

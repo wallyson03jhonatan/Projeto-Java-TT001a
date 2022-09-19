@@ -41,6 +41,11 @@ public class Consulta {
         this.historico = historico;
     }
 
+    @Override
+    public String toString() {
+        return "Consulta{" + "id=" + id + ", dataConsulta=" + dataConsulta + ", historico=" + historico + '}';
+    }
+
     
 
 }

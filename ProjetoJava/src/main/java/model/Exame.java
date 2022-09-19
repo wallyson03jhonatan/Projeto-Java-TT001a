@@ -40,5 +40,10 @@ public class Exame {
         this.dataExame = dataExame;
     }
 
+    @Override
+    public String toString() {
+        return "Exame{" + "id=" + id + ", descricao=" + descricao + ", dataExame=" + dataExame + '}';
+    }
+
    
 }

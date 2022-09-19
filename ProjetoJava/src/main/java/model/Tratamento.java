@@ -41,4 +41,10 @@ public class Tratamento {
         this.dataFim = dataFim;
     }
 
+    @Override
+    public String toString() {
+        return "Tratamento{" + "protocolo=" + protocolo + ", dataIni=" + dataIni + ", dataFim=" + dataFim + '}';
+    }
+
+    
 }

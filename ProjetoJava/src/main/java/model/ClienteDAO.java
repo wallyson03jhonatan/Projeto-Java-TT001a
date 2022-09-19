@@ -29,7 +29,7 @@ public class ClienteDAO extends DAO {
             stmt.setString(2, cpf);
             executeUpdate(stmt);
         } catch (SQLException ex){
-            Logger.getLogger(AnimalDAO.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(ClienteDAO.class.getName()).log(Level.SEVERE, null, ex);
         }
         return this.retrieveById(lastId("cliente", "id"));
     };
@@ -90,7 +90,7 @@ public class ClienteDAO extends DAO {
      public void delete(int id){
         try {
             PreparedStatement stmt;
-            stmt = DAO.getConnection().prepareStatement("DELETE FROM animal where id=?");
+            stmt = DAO.getConnection().prepareStatement("DELETE FROM cliente where id=?");
             stmt.setInt(1, id);
             executeUpdate(stmt);
         } catch (SQLException e){

@@ -40,7 +40,7 @@ public class EspecieDAO extends DAO {
         } catch (SQLException e) {
             System.err.println("Exception: " + e.getMessage());
         }
-        return Especie;
+        return especie;
     }
     
     public List retrieve(String query){

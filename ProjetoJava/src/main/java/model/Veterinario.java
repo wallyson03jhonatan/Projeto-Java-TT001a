@@ -48,6 +48,10 @@ public class Veterinario {
     public void setTelefone(String telefone) {
         this.telefone = telefone;
     }
-    
 
+    @Override
+    public String toString() {
+        return "Veterinario{" + "id=" + id + ", nome=" + nome + ", cpf=" + cpf + ", telefone=" + telefone + '}';
+    }
+    
 }

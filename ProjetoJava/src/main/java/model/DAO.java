@@ -50,7 +50,7 @@ public abstract class DAO {
         int lastId = -1;
         try {
             s = (Statement) con.createStatement();
-            ResultSet rs = s.executeQuery("SELECT MAX(" + primaryKey + ") as id FROM " + tableName);;
+            ResultSet rs = s.executeQuery("SELECT MAX(" + primaryKey + ") as id FROM " + tableName);
             if (rs.next()){
                 lastId = rs.getInt("id");
             }
@@ -65,43 +65,48 @@ public abstract class DAO {
     protected final boolean createTable(){
         try {
             PreparedStatement stmt;
-
+            
+            //stmt = DAO.getConnection().prepareStatement("DROP TABLE animal; /n");
+            //executeUpdate(stmt);
+            
             //Tabela Cliente
-            stmt = DAO.getConnection().prepareStatement("CREATE TABLE IF NOT EXISTS Cliente (\n"
+            stmt = DAO.getConnection().prepareStatement("CREATE TABLE IF NOT EXISTS cliente (\n"
                     + "id INTEGER PRIMARY KEY, \n"
                     + "nome VARCHAR, \n"
-                    + "cpf VARCHAR, \n");
+                    + "cpf VARCHAR); \n"
+            );
             executeUpdate(stmt);
             
             // Tabela Especie
-            stmt = DAO.getConnection().prepareStatement("CREATE TABLE IF NOT EXISTS Spicie (\n"
+            stmt = DAO.getConnection().prepareStatement("CREATE TABLE IF NOT EXISTS especie (\n"
                     + "id INTEGER PRIMARY KEY, \n"
                     + "nome VARCHAR); \n"
             );
             executeUpdate(stmt);
             
             // Tabela Animal
-            stmt = DAO.getConnection().prepareStatement("CREATE TABLE IF NOT EXISTS Animal (\n"
+            stmt = DAO.getConnection().prepareStatement("CREATE TABLE IF NOT EXISTS animal (\n"
                     + "id INTEGER PRIMARY KEY, \n"
                     + "nome VARCHAR, \n" 
                     + "idadeAnimal INTEGER, \n"
                     + "sexoAnimal INTEGER, \n"
-
+                    + "idCliente INTEGER, \n"
+                    + "idEspecie INTEGER); \n"
             );
             executeUpdate(stmt);
             
             // Tabela Veterinario
-            stmt = DAO.getConnection().prepareStatement("CREATE TABLE IF NOT EXISTS Veterinario (\n"
+            stmt = DAO.getConnection().prepareStatement("CREATE TABLE IF NOT EXISTS veterinario (\n"
                     + "id INTEGER PRIMARY KEY, \n"
                     + "nome VARCHAR, \n"
                     + "cpf VARCHAR, \n"
-                    + "telefone VARCHAR, \n"
+                    + "telefone VARCHAR); \n"
 
             );
             executeUpdate(stmt);
             
             // Tabela Tratamento
-            stmt = DAO.getConnection().prepareStatement("CREATE TABLE IF NOT EXISTS Tratamento (\n"
+            stmt = DAO.getConnection().prepareStatement("CREATE TABLE IF NOT EXISTS tratamento (\n"
                     + "protocolo INTEGER PRIMARY KEY, \n"
                     + "dataIni DATE, \n"
                     + "dataFim DATE); \n"
@@ -109,14 +114,14 @@ public abstract class DAO {
             executeUpdate(stmt);
             
             // Tabela Consulta
-            stmt = DAO.getConnection().prepareStatement("CREATE TABLE IF NOT EXISTS Consulta (\n"
+            stmt = DAO.getConnection().prepareStatement("CREATE TABLE IF NOT EXISTS consulta (\n"
                     + "id INTEGER PRIMARY KEY, \n"
                     + "dataConsulta DATE, \n"
                     + "historico VARCHAR); \n"
             );
             executeUpdate(stmt);
          
-            stmt = DAO.getConnection().prepareStatement("CREATE TABLE IF NOT EXISTS Exame (\n"
+            stmt = DAO.getConnection().prepareStatement("CREATE TABLE IF NOT EXISTS exame (\n"
                     + "id INTEGER PRIMARY KEY, \n"
                     + "dataExame DATE, \n"
                     + "descricao VARCHAR); \n"  

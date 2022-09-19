@@ -5,6 +5,13 @@
 
 package com.mycompany.projetojava;
 
+import model.Cliente;
+import model.ClienteDAO;
+import java.util.List;
+import model.Animal;
+import model.AnimalDAO;
+import model.Especie;
+import model.EspecieDAO;
 /**
  *
  * @author wally
@@ -12,6 +19,8 @@ package com.mycompany.projetojava;
 public class ProjetoJava {
 
     public static void main(String[] args) {
-        System.out.println("Hello World!");
+      //  Cliente c1 = ClienteDAO.getInstance().create("Marcia", "12345678989");
+      Animal a3 = AnimalDAO.getInstance().create("Raiposo", 2, 1, 2, 1);
+      System.out.println(a3);
     }
 }

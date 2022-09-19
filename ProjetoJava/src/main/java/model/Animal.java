@@ -13,16 +13,20 @@ public class Animal {
     private String nome;
     private int idadeAnimal;
     private int sexoAnimal;
+    private int idCliente;
+    private int idEspecie;
     
     public Animal() {
     }
     
 
-    public Animal(int id, String nome, int idadeAnimal, int sexoAnimal) {
+    public Animal(int id, String nome, int idadeAnimal, int sexoAnimal, int idCliente, int idEspecie) {
         this.id = id;
         this.nome = nome;
         this.idadeAnimal = idadeAnimal;
         this.sexoAnimal = sexoAnimal;
+        this.idCliente = idCliente;
+        this.idEspecie = idEspecie;
     }
 
     public int getId() {
@@ -41,6 +45,14 @@ public class Animal {
         return sexoAnimal;
     }
 
+    public int getIdCliente() {
+        return idCliente;
+    }
+
+    public int getIdEspecie() {
+        return idEspecie;
+    }
+
     public void setNome(String nome) {
         this.nome = nome;
     }
@@ -53,9 +65,16 @@ public class Animal {
         this.sexoAnimal = sexoAnimal;
     }
 
-   @Override
-    public String toString() {
-        return "Animal{" + "Id=" + id + ", nome=" + nome + ", animalAnoNascimento=" + idadeAnimal + ", sexoAnimal=" + sexoAnimal +'}';
+    public void setIdCliente(int idCliente) {
+        this.idCliente = idCliente;
     }
-    
+
+    public void setIdEspecie(int idEspecie) {
+        this.idEspecie = idEspecie;
+    }
+
+    @Override
+    public String toString() {
+        return "Animal{" + "id=" + id + ", nome=" + nome + ", idadeAnimal=" + idadeAnimal + ", sexoAnimal=" + sexoAnimal + ", idCliente=" + idCliente + ", idEspecie=" + idEspecie + '}';
+    }  
 }
