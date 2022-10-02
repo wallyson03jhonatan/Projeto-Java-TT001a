@@ -4,18 +4,14 @@
  */
 package model;
 
-import java.time.LocalDate;
+import java.util.Date;
 
-/**
- *
- * @author wally
- */
 public class Tratamento {
     private int protocolo;
-    private LocalDate dataIni;
-    private LocalDate dataFim;
+    private Date dataIni;
+    private Date dataFim;
 
-    public Tratamento(int protocolo, LocalDate dataIni, LocalDate dataFim) {
+    public Tratamento(int protocolo, Date dataIni, Date dataFim) {
         this.protocolo = protocolo;
         this.dataIni = dataIni;
         this.dataFim = dataFim;
@@ -25,19 +21,19 @@ public class Tratamento {
         return protocolo;
     }
 
-    public LocalDate getDataIni() {
+    public Date getDataIni() {
         return dataIni;
     }
 
-    public LocalDate getDataFim() {
+    public Date getDataFim() {
         return dataFim;
     }
 
-    public void setDataIni(LocalDate dataIni) {
+    public void setDataIni(Date dataIni) {
         this.dataIni = dataIni;
     }
 
-    public void setDataFim(LocalDate dataFim) {
+    public void setDataFim(Date dataFim) {
         this.dataFim = dataFim;
     }
 

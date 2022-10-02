@@ -43,7 +43,7 @@ public class TratamentoDAO extends DAO{
     public Tratamento buildingObject(ResultSet rs){
         Tratamento tratamento = null;
         try {
-            tratamento = new tratamento(rs.getInt("protocolo"), rs.getDate("ini"), rs.getDate("fim"));
+            tratamento = new Tratamento(rs.getInt("protocolo"), rs.getDate("ini"), rs.getDate("fim"));
         } catch (SQLException e) {
             System.err.println("Exception: " + e.getMessage());
         }

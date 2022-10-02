@@ -11,6 +11,7 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import java.sql.Date;
 import static model.DAO.getConnection;
 
 public class ExameDAO extends DAO {
@@ -25,14 +26,15 @@ public class ExameDAO extends DAO {
         return (instance==null?(instance = new ExameDAO()):instance);
     }
     
-    public Exame create(String descricao){
+    public Exame create(String descricao, Date data){
         try {
             PreparedStatement stmt;
-            stmt = DAO.getConnection().prepareStatement("INSERT INTO exam (descricao) VALUES (?)");
+            stmt = DAO.getConnection().prepareStatement("INSERT INTO exam (descricao, dataExame) VALUES (?, ?)");
             stmt.setString(1, descricao);
+            stmt.setDate(2, data);
             executeUpdate(stmt);
         } catch (SQLException ex){
-            Logger.getLogger(ExamDAO.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(ExameDAO.class.getName()).log(Level.SEVERE, null, ex);
         }
         return this.retrieveById(lastId("exame", "id"));
     };
@@ -40,7 +42,7 @@ public class ExameDAO extends DAO {
     public Exame buildingObject(ResultSet rs){
         Exame exame = null;
         try {
-            exame = new Exame(rs.getInt("id"), rs.getString("descricao"));
+            exame = new Exame(rs.getInt("id"), rs.getString("descricao"), rs.getDate("dataExame"));
         } catch (SQLException e) {
             System.err.println("Exception: " + e.getMessage());
         }

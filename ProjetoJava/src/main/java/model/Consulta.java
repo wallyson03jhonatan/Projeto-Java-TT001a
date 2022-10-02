@@ -4,7 +4,7 @@
  */
 package model;
 
-import java.time.LocalDate;
+import java.util.Date;
 
 /**
  *
@@ -12,10 +12,10 @@ import java.time.LocalDate;
  */
 public class Consulta {
     private int id;
-    private LocalDate dataConsulta; 
+    private Date dataConsulta; 
     private String historico;
 
-    public Consulta(int id, LocalDate dataConsulta, String historico) {
+    public Consulta(int id, Date dataConsulta, String historico) {
         this.id = id;
         this.dataConsulta = dataConsulta;
         this.historico = historico;
@@ -25,7 +25,7 @@ public class Consulta {
         return id;
     }
 
-    public LocalDate getDataConsulta() {
+    public Date getDataConsulta() {
         return dataConsulta;
     }
 
@@ -33,7 +33,7 @@ public class Consulta {
         return historico;
     }
 
-    public void setDataConsulta(LocalDate dataConsulta) {
+    public void setDataConsulta(Date dataConsulta) {
         this.dataConsulta = dataConsulta;
     }
 

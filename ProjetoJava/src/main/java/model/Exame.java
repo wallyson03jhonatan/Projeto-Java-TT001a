@@ -4,7 +4,7 @@
  */
 package model;
 
-import java.time.LocalDate;
+import java.util.Date;
 /**
  *
  * @author wally
@@ -12,9 +12,9 @@ import java.time.LocalDate;
 public class Exame {
     private int id; 
     private String descricao;
-    private LocalDate dataExame;     
+    private Date dataExame;     
 
-    public Exame(int id, String descricao, LocalDate dataExame) {
+    public Exame(int id, String descricao, Date dataExame) {
         this.id = id;
         this.descricao = descricao;
         this.dataExame = dataExame;
@@ -28,7 +28,7 @@ public class Exame {
         return descricao;
     }
 
-    public LocalDate getDataExame() {
+    public Date getDataExame() {
         return dataExame;
     }
 
@@ -36,7 +36,7 @@ public class Exame {
         this.descricao = descricao;
     }
 
-    public void setDataExame(LocalDate dataExame) {
+    public void setDataExame(Date dataExame) {
         this.dataExame = dataExame;
     }
 
