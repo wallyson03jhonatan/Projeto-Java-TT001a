@@ -1,24 +1,18 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
- */
 package model;
 
-import java.util.Date;
+import java.sql.Date;
 
-/**
- *
- * @author wally
- */
 public class Consulta {
     private int id;
     private Date dataConsulta; 
     private String historico;
+    private int idVeterinario;
 
-    public Consulta(int id, Date dataConsulta, String historico) {
+    public Consulta(int id, Date dataConsulta, String historico, int idVeterinario) {
         this.id = id;
         this.dataConsulta = dataConsulta;
         this.historico = historico;
+        this.idVeterinario = idVeterinario;
     }
 
     public int getId() {
@@ -33,6 +27,10 @@ public class Consulta {
         return historico;
     }
 
+    public int getIdVeterinario() {
+        return idVeterinario;
+    }
+    
     public void setDataConsulta(Date dataConsulta) {
         this.dataConsulta = dataConsulta;
     }
@@ -41,11 +39,13 @@ public class Consulta {
         this.historico = historico;
     }
 
-    @Override
-    public String toString() {
-        return "Consulta{" + "id=" + id + ", dataConsulta=" + dataConsulta + ", historico=" + historico + '}';
+    public void setIdVeterinario(int idVeterinario) {
+        this.idVeterinario = idVeterinario;
     }
 
+    @Override
+    public String toString() {
+        return "Consulta{" + "id=" + id + ", dataConsulta=" + dataConsulta + ", historico=" + historico + ", idVeterinario=" + idVeterinario + '}';
+    }
     
-
 }

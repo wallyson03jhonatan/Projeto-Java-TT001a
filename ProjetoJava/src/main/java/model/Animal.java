@@ -1,17 +1,9 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
- */
 package model;
 
-/**
- *
- * @author wally
- */
 public class Animal {
     private int id;
     private String nome;
-    private int idadeAnimal;
+    private int anoNascAnimal;
     private int sexoAnimal;
     private int idCliente;
     private int idEspecie;
@@ -20,10 +12,10 @@ public class Animal {
     }
     
 
-    public Animal(int id, String nome, int idadeAnimal, int sexoAnimal, int idCliente, int idEspecie) {
+    public Animal(int id, String nome, int anoNascAnimal, int sexoAnimal, int idCliente, int idEspecie) {
         this.id = id;
         this.nome = nome;
-        this.idadeAnimal = idadeAnimal;
+        this.anoNascAnimal = anoNascAnimal;
         this.sexoAnimal = sexoAnimal;
         this.idCliente = idCliente;
         this.idEspecie = idEspecie;
@@ -37,8 +29,8 @@ public class Animal {
         return nome;
     }
 
-    public int getIdadeAnimal() {
-        return idadeAnimal;
+    public int getAnoNascAnimal() {
+        return anoNascAnimal;
     }
 
     public int getSexoAnimal() {
@@ -57,8 +49,8 @@ public class Animal {
         this.nome = nome;
     }
 
-    public void setIdadeAnimal(int idadeAnimal) {
-        this.idadeAnimal = idadeAnimal;
+    public void setAnoNascAnimal(int anoNascAnimal) {
+        this.anoNascAnimal = anoNascAnimal;
     }
 
     public void setSexoAnimal(int sexoAnimal) {
@@ -75,6 +67,6 @@ public class Animal {
 
     @Override
     public String toString() {
-        return "Animal{" + "id=" + id + ", nome=" + nome + ", idadeAnimal=" + idadeAnimal + ", sexoAnimal=" + sexoAnimal + ", idCliente=" + idCliente + ", idEspecie=" + idEspecie + '}';
+        return "Animal{" + "id=" + id + ", nome=" + nome + ", idadeAnimal=" + anoNascAnimal + ", sexoAnimal=" + sexoAnimal + ", idCliente=" + idCliente + ", idEspecie=" + idEspecie + '}';
     }  
 }

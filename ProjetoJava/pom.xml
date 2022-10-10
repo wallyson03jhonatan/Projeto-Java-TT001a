@@ -11,6 +11,12 @@
             <artifactId>sqlite-jdbc</artifactId>
             <version>3.8.7</version>
         </dependency>
+        <dependency>
+            <groupId>com.calendarfx</groupId>
+            <artifactId>calendar</artifactId>
+            <version>8.4.2</version>
+            <type>pom</type>
+        </dependency>
     </dependencies>
     <properties>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>

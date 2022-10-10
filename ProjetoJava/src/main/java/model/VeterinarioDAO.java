@@ -1,7 +1,3 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
- */
 package model;
 
 import java.sql.PreparedStatement;
@@ -82,7 +78,7 @@ public class VeterinarioDAO extends DAO {
     public void update(int id, String nome, String cpf, String telefone){
         try {
             PreparedStatement stmt;
-            stmt = DAO.getConnection().prepareStatement("UPDATE veterinario set nome=?, cpf=?, telefone=?, where id=?");
+            stmt = DAO.getConnection().prepareStatement("UPDATE veterinario set nome=?, cpf=?, telefone=? where id=?");
             stmt.setString(1, nome);
             stmt.setString(2, cpf);
             stmt.setString(3, telefone); 
@@ -96,7 +92,7 @@ public class VeterinarioDAO extends DAO {
     public void delete(int id){
         try {
             PreparedStatement stmt;
-            stmt = DAO.getConnection().prepareStatement("DELETE FROM vet where id=?");
+            stmt = DAO.getConnection().prepareStatement("DELETE FROM veterinario where id=?");
             stmt.setInt(1, id);
             executeUpdate(stmt);
         } catch (SQLException e){

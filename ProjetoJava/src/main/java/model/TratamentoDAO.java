@@ -1,7 +1,3 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
- */
 package model;
 
 import java.sql.PreparedStatement;
@@ -26,13 +22,14 @@ public class TratamentoDAO extends DAO{
         return (instance==null?(instance = new TratamentoDAO()):instance);
     }
     
-    public Tratamento create(Date dataIni, Date dataFim, int protocolo){
+    public Tratamento create(Date dataIni, Date dataFim, int idAnimal, int idConsulta){
         try {
             PreparedStatement stmt;
-            stmt = DAO.getConnection().prepareStatement("INSERT INTO Tratamento (ini, fim, protocolo) VALUES (?, ?, ?)");
+            stmt = DAO.getConnection().prepareStatement("INSERT INTO tratamento (ini, fim, id_animal, id_consulta) VALUES (?, ?, ?, ?)");
             stmt.setDate(1, dataIni);
             stmt.setDate(2, dataFim);
-            stmt.setInt(3, protocolo);            
+            stmt.setInt(3, idAnimal);  
+            stmt.setInt(4, idConsulta);            
             executeUpdate(stmt);
         } catch (SQLException ex){
             Logger.getLogger(TratamentoDAO.class.getName()).log(Level.SEVERE, null, ex);
@@ -43,7 +40,7 @@ public class TratamentoDAO extends DAO{
     public Tratamento buildingObject(ResultSet rs){
         Tratamento tratamento = null;
         try {
-            tratamento = new Tratamento(rs.getInt("protocolo"), rs.getDate("ini"), rs.getDate("fim"));
+            tratamento = new Tratamento(rs.getInt("protocolo"), rs.getDate("ini"), rs.getDate("fim"), rs.getInt("id_animal"), rs.getInt("id_consulta"));
         } catch (SQLException e) {
             System.err.println("Exception: " + e.getMessage());
         }
@@ -76,13 +73,15 @@ public class TratamentoDAO extends DAO{
         return (tratamento.isEmpty()?null:tratamento.get(0));
     };
     
-    public void update(int protocolo, Date ini, Date fim){
+    public void update(int protocolo, Date ini, Date fim, int idAnimal, int idConsulta){
         try {
             PreparedStatement stmt;
-            stmt = DAO.getConnection().prepareStatement("UPDATE tratamento set ini=?, fim=? where protocolo=?");
+            stmt = DAO.getConnection().prepareStatement("UPDATE tratamento set ini=?, fim=?, id_animal=?, id_consulta=? where protocolo=?");
             stmt.setDate(1, ini);
             stmt.setDate(2, fim);
-            stmt.setInt(3, protocolo); 
+            stmt.setInt(3, idAnimal); 
+            stmt.setInt(4, idConsulta); 
+            stmt.setInt(5, protocolo); 
             executeUpdate(stmt);
         } catch (SQLException e){
             System.err.println("Exception: " + e.getMessage());

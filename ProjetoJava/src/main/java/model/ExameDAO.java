@@ -1,7 +1,3 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
- */
 package model;
 
 import java.sql.PreparedStatement;
@@ -26,12 +22,13 @@ public class ExameDAO extends DAO {
         return (instance==null?(instance = new ExameDAO()):instance);
     }
     
-    public Exame create(String descricao, Date data){
+    public Exame create(String descricao, Date data, int idConsulta){
         try {
             PreparedStatement stmt;
-            stmt = DAO.getConnection().prepareStatement("INSERT INTO exam (descricao, dataExame) VALUES (?, ?)");
+            stmt = DAO.getConnection().prepareStatement("INSERT INTO exame (descricao, dataExame, id_consulta) VALUES (?, ?, ?)");
             stmt.setString(1, descricao);
             stmt.setDate(2, data);
+            stmt.setInt(3, idConsulta);
             executeUpdate(stmt);
         } catch (SQLException ex){
             Logger.getLogger(ExameDAO.class.getName()).log(Level.SEVERE, null, ex);
@@ -42,7 +39,7 @@ public class ExameDAO extends DAO {
     public Exame buildingObject(ResultSet rs){
         Exame exame = null;
         try {
-            exame = new Exame(rs.getInt("id"), rs.getString("descricao"), rs.getDate("dataExame"));
+            exame = new Exame(rs.getInt("id"), rs.getString("descricao"), rs.getDate("dataExame"), rs.getInt("id_consulta"));
         } catch (SQLException e) {
             System.err.println("Exception: " + e.getMessage());
         }
@@ -76,12 +73,14 @@ public class ExameDAO extends DAO {
     };
     
     
-    public void update(int id, String descricao){
+    public void update(int id, String descricao, Date dataExame, int idConsulta){
         try {
             PreparedStatement stmt;
-            stmt = DAO.getConnection().prepareStatement("UPDATE exame set descricao=?  where id=?");
+            stmt = DAO.getConnection().prepareStatement("UPDATE exame set descricao=?, dataExame=?, id_consulta=?  where id=?");
             stmt.setString(1, descricao);
-            stmt.setInt(2, id);
+            stmt.setDate(2, dataExame);
+            stmt.setInt(3, idConsulta);
+            stmt.setInt(4, id);
             executeUpdate(stmt);
         } catch (SQLException e){
             System.err.println("Exception: " + e.getMessage());

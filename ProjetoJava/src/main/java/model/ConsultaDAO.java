@@ -1,7 +1,3 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
- */
 package model;
 
 import java.sql.PreparedStatement;
@@ -26,12 +22,13 @@ public class ConsultaDAO extends DAO {
         return (instance==null?(instance = new ConsultaDAO()):instance);
     }
     
-    public Consulta create(Date dataConsulta, String historico){
+    public Consulta create(Date dataConsulta, String historico, int idVeterinario){
         try {
             PreparedStatement stmt;
-            stmt = DAO.getConnection().prepareStatement("INSERT INTO consult (dataConsulta, historico) VALUES (?, ?)");
+            stmt = DAO.getConnection().prepareStatement("INSERT INTO consulta (dataConsulta, historico, id_veterinario) VALUES (?, ?, ?)");
             stmt.setDate(1, dataConsulta);
-            stmt.setString(2, historico);                             
+            stmt.setString(2, historico);
+            stmt.setInt(3, idVeterinario);
             executeUpdate(stmt);
         } catch (SQLException ex){
             Logger.getLogger(ConsultaDAO.class.getName()).log(Level.SEVERE, null, ex);
@@ -42,7 +39,7 @@ public class ConsultaDAO extends DAO {
     public Consulta buildingObject(ResultSet rs){
         Consulta conulta = null;
         try {
-            conulta = new Consulta(rs.getInt("id"), rs.getDate("dataConsulta"), rs.getString("historico"));
+            conulta = new Consulta(rs.getInt("id"), rs.getDate("dataConsulta"), rs.getString("historico"), rs.getInt("id_veterinario"));
         } catch (SQLException e) {
             System.err.println("Exception: " + e.getMessage());
         }
@@ -75,13 +72,14 @@ public class ConsultaDAO extends DAO {
         return (consulta.isEmpty()?null:consulta.get(0));
     };
     
-    public void update(int id, Date dataConsulta, String historico){
+    public void update(int id, Date dataConsulta, String historico, int idVeterinario){
         try {
             PreparedStatement stmt;
-            stmt = DAO.getConnection().prepareStatement("UPDATE consulta set dataConsulta=?, historico=? where id=?");
+            stmt = DAO.getConnection().prepareStatement("UPDATE consulta set dataConsulta=?, historico=?, id_veterinario=? where id=?");
             stmt.setDate(1, dataConsulta);
             stmt.setString(2, historico);
-            stmt.setInt(3, id);
+            stmt.setInt(3, idVeterinario);
+            stmt.setInt(4, id);
             executeUpdate(stmt);
         } catch (SQLException e){
             System.err.println("Exception: " + e.getMessage());

@@ -1,20 +1,20 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
- */
 package model;
 
-import java.util.Date;
+import java.sql.Date;
 
 public class Tratamento {
     private int protocolo;
     private Date dataIni;
     private Date dataFim;
+    private int idAnimal;
+    private int idConsulta;
 
-    public Tratamento(int protocolo, Date dataIni, Date dataFim) {
+    public Tratamento(int protocolo, Date dataIni, Date dataFim, int idAnimal, int idConsulta) {
         this.protocolo = protocolo;
         this.dataIni = dataIni;
         this.dataFim = dataFim;
+        this.idAnimal = idAnimal;
+        this.idConsulta = idConsulta;
     }
 
     public int getProtocolo() {
@@ -29,6 +29,14 @@ public class Tratamento {
         return dataFim;
     }
 
+    public int getIdAnimal() {
+        return idAnimal;
+    }
+
+    public int getIdConsulta() {
+        return idConsulta;
+    }
+    
     public void setDataIni(Date dataIni) {
         this.dataIni = dataIni;
     }
@@ -37,10 +45,17 @@ public class Tratamento {
         this.dataFim = dataFim;
     }
 
-    @Override
-    public String toString() {
-        return "Tratamento{" + "protocolo=" + protocolo + ", dataIni=" + dataIni + ", dataFim=" + dataFim + '}';
+    public void setIdAnimal(int idAnimal) {
+        this.idAnimal = idAnimal;
     }
 
-    
+    public void setIdConsulta(int idConsulta) {
+        this.idConsulta = idConsulta;
+    }
+
+    @Override
+    public String toString() {
+        return "Tratamento{" + "protocolo=" + protocolo + ", dataIni=" + dataIni + ", dataFim=" + dataFim + ", idAnimal=" + idAnimal + ", idConsulta=" + idConsulta + '}';
+    }
+
 }

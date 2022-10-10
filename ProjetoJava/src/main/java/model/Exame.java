@@ -1,23 +1,18 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
- */
 package model;
 
-import java.util.Date;
-/**
- *
- * @author wally
- */
+import java.sql.Date;
+
 public class Exame {
     private int id; 
     private String descricao;
-    private Date dataExame;     
+    private Date dataExame;   
+    private int idConsulta;
 
-    public Exame(int id, String descricao, Date dataExame) {
+    public Exame(int id, String descricao, Date dataExame, int idConsulta) {
         this.id = id;
         this.descricao = descricao;
         this.dataExame = dataExame;
+        this.idConsulta = idConsulta;
     }
 
     public int getId() {
@@ -32,6 +27,10 @@ public class Exame {
         return dataExame;
     }
 
+    public int getIdConsulta() {
+        return idConsulta;
+    }
+    
     public void setDescricao(String descricao) {
         this.descricao = descricao;
     }
@@ -40,10 +39,13 @@ public class Exame {
         this.dataExame = dataExame;
     }
 
-    @Override
-    public String toString() {
-        return "Exame{" + "id=" + id + ", descricao=" + descricao + ", dataExame=" + dataExame + '}';
+    public void setIdConsulta(int idConsulta) {
+        this.idConsulta = idConsulta;
     }
 
-   
+    @Override
+    public String toString() {
+        return "Exame{" + "id=" + id + ", descricao=" + descricao + ", dataExame=" + dataExame + ", idConsulta=" + idConsulta + '}';
+    }
+
 }
