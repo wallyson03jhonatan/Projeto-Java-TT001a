@@ -73,12 +73,12 @@ public class EspecieDAO extends DAO {
         return this.retrieve("SELECT * FROM especie WHERE nome LIKE '%" + nome + "%'");
     }
     
-    public void update(int id, String nome){
+    public void update(Especie especie){
         try {
             PreparedStatement stmt;
             stmt = DAO.getConnection().prepareStatement("UPDATE especie set nome=? where id=?");
-            stmt.setString(1, nome);
-            stmt.setInt(2, id);
+            stmt.setString(1, especie.getNome());
+            stmt.setInt(2, especie.getId());
             executeUpdate(stmt);
         } catch (SQLException e){
             System.err.println("Exception: " + e.getMessage());

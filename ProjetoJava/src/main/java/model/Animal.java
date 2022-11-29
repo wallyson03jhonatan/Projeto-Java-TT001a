@@ -3,8 +3,8 @@ package model;
 public class Animal {
     private int id;
     private String nome;
-    private int anoNascAnimal;
-    private int sexoAnimal;
+    private int anoNasc;
+    private String sexo;
     private int idCliente;
     private int idEspecie;
     
@@ -12,11 +12,11 @@ public class Animal {
     }
     
 
-    public Animal(int id, String nome, int anoNascAnimal, int sexoAnimal, int idCliente, int idEspecie) {
+    public Animal(int id, String nome, int anoNasc, String sexo, int idCliente, int idEspecie) {
         this.id = id;
         this.nome = nome;
-        this.anoNascAnimal = anoNascAnimal;
-        this.sexoAnimal = sexoAnimal;
+        this.anoNasc = anoNasc;
+        this.sexo = sexo;
         this.idCliente = idCliente;
         this.idEspecie = idEspecie;
     }
@@ -29,12 +29,12 @@ public class Animal {
         return nome;
     }
 
-    public int getAnoNascAnimal() {
-        return anoNascAnimal;
+    public int getAnoNasc() {
+        return anoNasc;
     }
 
-    public int getSexoAnimal() {
-        return sexoAnimal;
+    public String getSexo() {
+        return sexo;
     }
 
     public int getIdCliente() {
@@ -49,12 +49,12 @@ public class Animal {
         this.nome = nome;
     }
 
-    public void setAnoNascAnimal(int anoNascAnimal) {
-        this.anoNascAnimal = anoNascAnimal;
+    public void setAnoNasc(int anoNasc) {
+        this.anoNasc = anoNasc;
     }
 
-    public void setSexoAnimal(int sexoAnimal) {
-        this.sexoAnimal = sexoAnimal;
+    public void setSexo(String sexo) {
+        this.sexo = sexo;
     }
 
     public void setIdCliente(int idCliente) {
@@ -67,6 +67,6 @@ public class Animal {
 
     @Override
     public String toString() {
-        return "Animal{" + "id=" + id + ", nome=" + nome + ", idadeAnimal=" + anoNascAnimal + ", sexoAnimal=" + sexoAnimal + ", idCliente=" + idCliente + ", idEspecie=" + idEspecie + '}';
+        return "Animal{" + "id=" + id + ", nome=" + nome + ", idadeAnimal=" + anoNasc + ", sexoAnimal=" + sexo + ", idCliente=" + idCliente + ", idEspecie=" + idEspecie + '}';
     }  
 }

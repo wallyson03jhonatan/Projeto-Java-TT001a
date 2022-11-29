@@ -8,6 +8,7 @@ import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import java.sql.Date;
+import java.util.Calendar;
 import static model.DAO.getConnection;
 
 public class ExameDAO extends DAO {
@@ -22,12 +23,12 @@ public class ExameDAO extends DAO {
         return (instance==null?(instance = new ExameDAO()):instance);
     }
     
-    public Exame create(String descricao, Date data, int idConsulta){
+    public Exame create(String descricao, Calendar data, int idConsulta){
         try {
             PreparedStatement stmt;
-            stmt = DAO.getConnection().prepareStatement("INSERT INTO exame (descricao, dataExame, id_consulta) VALUES (?, ?, ?)");
+            stmt = DAO.getConnection().prepareStatement("INSERT INTO exame (descricao, data, id_consulta) VALUES (?, ?, ?)");
             stmt.setString(1, descricao);
-            stmt.setDate(2, data);
+            stmt.setDate(2, new Date(data.getTimeInMillis()));
             stmt.setInt(3, idConsulta);
             executeUpdate(stmt);
         } catch (SQLException ex){
@@ -39,7 +40,9 @@ public class ExameDAO extends DAO {
     public Exame buildingObject(ResultSet rs){
         Exame exame = null;
         try {
-            exame = new Exame(rs.getInt("id"), rs.getString("descricao"), rs.getDate("dataExame"), rs.getInt("id_consulta"));
+            Calendar dt = Calendar.getInstance();
+            dt.setTime(rs.getDate("data"));
+            exame = new Exame(rs.getInt("id"), rs.getString("descricao"), dt, rs.getInt("id_consulta"));
         } catch (SQLException e) {
             System.err.println("Exception: " + e.getMessage());
         }
@@ -72,15 +75,21 @@ public class ExameDAO extends DAO {
         return (exames.isEmpty()?null:exames.get(0));
     };
     
+    public List retrieveByConsulta(int id){
+        return this.retrieve("SELECT * FROM exame WHERE id_consulta = " + id);
+    };
     
-    public void update(int id, String descricao, Date dataExame, int idConsulta){
+    public List retrieveBySimilarDescricao(String descricao, int idConsulta){
+        return this.retrieve("SELECT * FROM exame WHERE descricao LIKE '%" + descricao + "%' and id_consulta = " + idConsulta);
+    };
+    
+    public void update(Exame exame){
         try {
             PreparedStatement stmt;
-            stmt = DAO.getConnection().prepareStatement("UPDATE exame set descricao=?, dataExame=?, id_consulta=?  where id=?");
-            stmt.setString(1, descricao);
-            stmt.setDate(2, dataExame);
-            stmt.setInt(3, idConsulta);
-            stmt.setInt(4, id);
+            stmt = DAO.getConnection().prepareStatement("UPDATE exame set descricao=?, data=? where id=?");
+            stmt.setString(1, exame.getDescricao());
+            stmt.setDate(2, new Date(exame.getData().getTimeInMillis()));
+            stmt.setInt(3, exame.getId());
             executeUpdate(stmt);
         } catch (SQLException e){
             System.err.println("Exception: " + e.getMessage());

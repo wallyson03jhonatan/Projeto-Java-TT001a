@@ -1,39 +1,30 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
- */
 package model;
 
-/**
- *
- * @author wally
- */
 public class Especie {
     private int id;
-    private String nomeEspecie;
+    private String nome;
     
     public Especie() {
     }
 
-    public Especie(int id, String nomeEspecie) {
+    public Especie(int id, String nome) {
         this.id = id;
-        this.nomeEspecie = nomeEspecie;
+        this.nome = nome;
     }
 
     public int getId() {
         return id;
     }
 
-    public String getNomeEspecie() {
-        return nomeEspecie;
+    public String getNome() {
+        return nome;
     }
 
-    public void setNomeEspecie(String nomeEspecie) {
-        this.nomeEspecie = nomeEspecie;
+    public void setNome(String nome) {
+        this.nome = nome;
     }
       
-   
     public String toString() {
-        return "Especie{" + "id=" + id + ", nomeEspecie=" + nomeEspecie + '}';
+        return "Especie{" + "id=" + id + ", nome=" + nome + '}';
     }
 }

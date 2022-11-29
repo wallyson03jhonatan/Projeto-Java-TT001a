@@ -75,14 +75,14 @@ public class VeterinarioDAO extends DAO {
         return this.retrieve("SELECT * FROM veterinario WHERE nome LIKE '%" + nome + "%'");
     }
     
-    public void update(int id, String nome, String cpf, String telefone){
+    public void update(Veterinario veterinario){
         try {
             PreparedStatement stmt;
             stmt = DAO.getConnection().prepareStatement("UPDATE veterinario set nome=?, cpf=?, telefone=? where id=?");
-            stmt.setString(1, nome);
-            stmt.setString(2, cpf);
-            stmt.setString(3, telefone); 
-            stmt.setInt(4, id);
+            stmt.setString(1, veterinario.getNome());
+            stmt.setString(2, veterinario.getCpf());
+            stmt.setString(3, veterinario.getTelefone()); 
+            stmt.setInt(4, veterinario.getId());
             executeUpdate(stmt);
         } catch (SQLException e){
             System.err.println("Exception: " + e.getMessage());

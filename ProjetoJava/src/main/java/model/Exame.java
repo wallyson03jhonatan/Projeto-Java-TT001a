@@ -1,17 +1,17 @@
 package model;
 
-import java.sql.Date;
+import java.util.Calendar;
 
 public class Exame {
     private int id; 
     private String descricao;
-    private Date dataExame;   
+    private Calendar data;   
     private int idConsulta;
 
-    public Exame(int id, String descricao, Date dataExame, int idConsulta) {
+    public Exame(int id, String descricao, Calendar data, int idConsulta) {
         this.id = id;
         this.descricao = descricao;
-        this.dataExame = dataExame;
+        this.data = data;
         this.idConsulta = idConsulta;
     }
 
@@ -23,8 +23,8 @@ public class Exame {
         return descricao;
     }
 
-    public Date getDataExame() {
-        return dataExame;
+    public Calendar getData() {
+        return data;
     }
 
     public int getIdConsulta() {
@@ -35,8 +35,8 @@ public class Exame {
         this.descricao = descricao;
     }
 
-    public void setDataExame(Date dataExame) {
-        this.dataExame = dataExame;
+    public void setData(Calendar data) {
+        this.data = data;
     }
 
     public void setIdConsulta(int idConsulta) {
@@ -45,7 +45,7 @@ public class Exame {
 
     @Override
     public String toString() {
-        return "Exame{" + "id=" + id + ", descricao=" + descricao + ", dataExame=" + dataExame + ", idConsulta=" + idConsulta + '}';
+        return "Exame{" + "id=" + id + ", descricao=" + descricao + ", dataExame=" + data + ", idConsulta=" + idConsulta + '}';
     }
 
 }

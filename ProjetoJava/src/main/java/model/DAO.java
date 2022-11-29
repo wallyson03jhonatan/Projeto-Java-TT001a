@@ -6,7 +6,7 @@ import java.util.logging.Level;
 import java.util.logging.Logger;
 
 public abstract class DAO {
-    public static final String DBURL = "jdbc:sqlite:clinica_vet.db";
+    public static final String DBURL = "jdbc:sqlite:clinica_veterinaria8.db";
     private static Connection con;
     protected static SimpleDateFormat dateFormat = new SimpleDateFormat("dd/MM/yyyy");
 
@@ -88,10 +88,10 @@ public abstract class DAO {
             stmt = DAO.getConnection().prepareStatement("CREATE TABLE IF NOT EXISTS animal (\n"
                     + "id INTEGER PRIMARY KEY, \n"
                     + "nome VARCHAR, \n" 
-                    + "anoNascAnimal INTEGER, \n"
-                    + "sexoAnimal INTEGER, \n"
-                    + "idCliente INTEGER, \n"
-                    + "idEspecie INTEGER); \n"
+                    + "anoNasc INTEGER, \n"
+                    + "sexo INTEGER, \n"
+                    + "id_cliente INTEGER, \n"
+                    + "id_especie INTEGER); \n"
             );
             executeUpdate(stmt);
             
@@ -117,15 +117,18 @@ public abstract class DAO {
             // Tabela Consulta
             stmt = DAO.getConnection().prepareStatement("CREATE TABLE IF NOT EXISTS consulta (\n"
                     + "id INTEGER PRIMARY KEY, \n"
-                    + "dataConsulta DATE, \n"
+                    + "data DATE, \n"
+                    + "hora INTEGER, \n"
                     + "historico VARCHAR,\n"
-                    + "id_veterinario INTEGER); \n"
+                    + "id_animal INTEGER, \n"
+                    + "id_veterinario INTEGER, \n"
+                    + "finalizado BOOLEAN); \n"
             );
             executeUpdate(stmt);
          
             stmt = DAO.getConnection().prepareStatement("CREATE TABLE IF NOT EXISTS exame (\n"
                     + "id INTEGER PRIMARY KEY, \n"
-                    + "dataExame DATE, \n"
+                    + "data DATE, \n"
                     + "descricao VARCHAR,\n"
                     + "id_consulta INTEGER); \n"  
             );
